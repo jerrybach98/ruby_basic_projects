@@ -1,1 +1,1 @@
-# ruby_basic_projects
+Basic scripts in Ruby
