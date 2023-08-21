@@ -2,17 +2,15 @@
 def caesar_cipher (string, number)
 	#Convert into array
 	string_array = string.split(//)
-	puts "Original string: #{string}"
-	puts "String Array: #{string_array}"
 	
 	#Iterate through array with map to transform each element
 	shifted_array = string_array.map do |char|
 		#If element "char" is alphabetical
 		if char.match?(/[A-Za-z]/)
 		#Convert to ASCII
-		p char.ord
+		char.ord
 		#Shift value by given number input
-		p	shifted_value = char.ord + number
+		shifted_value = char.ord + number
 			#Lowercase values, loops after z
 			if char.ord > 96 && shifted_value > 122
 				shifted_value = shifted_value - 26
@@ -28,7 +26,6 @@ def caesar_cipher (string, number)
 		end
 
 	end
-	p shifted_array
 	puts shifted_array.join
 end
 
