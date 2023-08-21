@@ -17,7 +17,6 @@ def substrings(string, dictionary)
 		#Store each iteration match in instances
 		instances
 	end
-
 end
 
 puts substrings(string, dictionary) 
