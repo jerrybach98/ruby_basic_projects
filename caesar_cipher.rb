@@ -1,31 +1,35 @@
-#Caesar cipher most commonly known encrption techniques
-#each letter in plain text is replaced by a fixed letter 
-#take in string and number then output modified string
-#convert string into number?
-#wrap Z to A
-#keep same case
-#takes series of letter and substitutes down the alphabet
-#"A", 1" = B
-#"U", 7 = B // by changing 26-7=19 positions
-#"Z", 1' = 26-1 or 25 positions
-
-#psuedo code = given letter, convert to number, shift position, then convert back to string
-
-
+#Function takes in string and number inputs
 def caesar_cipher (string, number)
-	#string input > convert to array > iterate with map and transform to ASCII value > output variable
-	#shift ASCII value up by variable number 
-  #Convert number value back to letter and join to string
+	#Convert into array
+	string_array = string.split(//)
+	puts "Original string: #{string}"
+	puts "String Array: #{string_array}"
 	
-	ascii_value = string.chars.map(&:ord)
-	shifted_value = ascii_value.map {|c| c + number}
-	shifted_string = shifted_value.map {|c| c.chr}.join 
+	#Iterate through array with map to transform each element
+	shifted_array = string_array.map do |char|
+		#If element "char" is alphabetical
+		if char.match?(/[A-Za-z]/)
+		#Convert to ASCII
+		p char.ord
+		#Shift value by given number input
+		p	shifted_value = char.ord + number
+			#Lowercase values, loops after z
+			if char.ord > 96 && shifted_value > 122
+				shifted_value = shifted_value - 26
+			#Uppercase to loop after Z
+			elsif char.ord > 65 && char.ord < 91 && shifted_value > 90
+				shifted_value = shifted_value - 26
+			end
+		#Convert back to letter
+		 shifted_characters = shifted_value.chr
+		#Leave character alone if not alphabetical
+		else 
+			char
+		end
 
-	p "Original string: #{string}"
-	p "ASCII value: #{ascii_value}"
-	p "Shifted ASCII: #{ascii_value}"
-	p "Shifted string: #{shifted_string}"
-
+	end
+	p shifted_array
+	puts shifted_array.join
 end
 
-puts caesar_cipher("abc",1)
+puts caesar_cipher("abc ABC!", 1)
