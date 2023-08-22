@@ -1,3 +1,4 @@
+#Return a pair of days representing the best day to buy and sell given an array of stock prices, one for each hypothetical day. 
 daily_stock_price = [17,3,6,9,15,8,6,1,10]
 
 def stockpicker (daily_stock_price)
