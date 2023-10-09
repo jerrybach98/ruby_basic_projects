@@ -1,30 +1,31 @@
-# Encrypt words by moving their index
-def caesar_cipher(string, number)
-  # String to array
-  string_array = string.split(//)
+class Encryption
 
-  shifted_array = string_array.map do |char|
-    if char.match?(/[A-Za-z]/)
-      # ASCII index number
-      char.ord
-      # Shift index
-      shifted_value = char.ord + number
-      # Lowercase
-      if char.ord > 96 && shifted_value > 122
-        shifted_value -= 26
-      # Uppercase
-      elsif char.ord > 65 && char.ord < 91 && shifted_value > 90
-        shifted_value -= 26
+  # Encrypt words by moving their index
+  def caesar_cipher(string, number)
+    # String to array
+    string_array = string.split(//)
+
+    # Convert ASCII index number, shift index for upper and lowercase, convert back to string
+    shifted_array = string_array.map do |char|
+      if char.match?(/[A-Za-z]/)
+
+        char.ord
+        shifted_value = char.ord + number
+
+        if char.ord > 96 && shifted_value > 122
+          shifted_value -= 26
+        elsif char.ord > 65 && char.ord < 91 && shifted_value > 90
+          shifted_value -= 26
+        end
+        shifted_characters = shifted_value.chr
+      # Handle non-characters 
+      else
+        char
       end
-      # Back to string
-      shifted_characters = shifted_value.chr
-    # Non-characters
-    else
-
-      char
     end
+    shifted_array.join
   end
-  puts shifted_array.join
 end
 
-puts caesar_cipher('abc ABC!', 1)
+encrypt = Encryption.new
+p encrypt.caesar_cipher('abc ABC!', 1)
