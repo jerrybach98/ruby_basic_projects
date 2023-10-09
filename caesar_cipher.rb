@@ -27,5 +27,5 @@ class Encryption
   end
 end
 
-encrypt = Encryption.new
-p encrypt.caesar_cipher('abc ABC!', 1)
+# encrypt = Encryption.new
+# p encrypt.caesar_cipher('abc ABC!', 1)
